@@ -1,8 +1,8 @@
 <template>
 <div>
    <h1>Hourly</h1>
-   <div v-for="(item, index) in hourly" v-if="index<=7">
-       <h2>{{ item.dt_txt }}</h2>
+   <div v-for="item in firstEight">
+       <h2>{{ item.dt_txt | stripDate}}</h2>
        <p>{{ item.main.temp | round}} </p>
        <p>{{item.weather[0].description}}</p>
        <img :src="'http://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="">
@@ -11,8 +11,7 @@
 </template>
 
 <script>
-    import axios from 'axios'
-   export default {
+  export default {
        name: 'hourly-weather',
        data: function(){
            return {
@@ -24,9 +23,7 @@
        },
        computed: {
             firstEight: function(){
-                return this.hourly.filter(function(){
-                    hourly.splice(hourly.length = 8);
-                });
+                return this.hourly.slice(0, 8)
             } 
        },
        mounted(){
@@ -49,10 +46,8 @@
            round: function(data){
                return Math.round(data);
            },
-           loop: function(data, key){
-                if (data[key] < data[7]) {
-                    return data[key]
-                }
+           stripDate: function(data){
+            return data.slice(10, 20)
            } 
        }
    }
