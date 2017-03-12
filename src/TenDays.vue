@@ -1,13 +1,18 @@
 <template>
   <div>
-    <h1>10 Days</h1>
+    <ten-days-weather></ten-days-weather>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'ten-days'
-  }
+	import TenDaysWeather from './TenDaysWeather.vue'
+
+  	export default {
+    	name: 'ten-days',
+    	components: {
+    		TenDaysWeather
+    	}
+	}
 </script>
 
 <style lang="scss" scoped>

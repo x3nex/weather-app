@@ -36,10 +36,6 @@
            })
            .then(response =>{
                this.hourly = response.data.list
-               // this.temp = response.data.list[0].main.temp;
-               // this.icon = "http://openweathermap.org/img/w/" + response.data.list[0].weather[0].icon + ".png";
-               // console.log(response);
-               console.log(response);
            })
        },
        filters: {
@@ -47,7 +43,7 @@
                return Math.round(data);
            },
            stripDate: function(data){
-            return data.slice(10, 20)
+            return data.slice(10, 16)
            } 
        }
    }
