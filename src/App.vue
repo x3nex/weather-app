@@ -17,5 +17,7 @@ import Navigation from './Navigation.vue'
 </script>
 
 <style>
-  /*Ovde kucamo globalni style*/
+    body{
+        background: linear-gradient(to left, #2c3e50, #3498db);
+    }
 </style>

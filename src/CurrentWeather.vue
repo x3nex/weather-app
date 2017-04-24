@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="current-weather">
 		<h1> {{temp | round}}&deg;C</h1>
 		<h3>{{city}}</h3>
 		<h4>{{desc}}</h4>
@@ -30,9 +30,9 @@
 			.then(response =>{
 				this.temp = response.data.main.temp;
 				this.city = response.data.name;
-				this.icon = $(".current-icon").html("<img src='http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png' alt='OpenWeather Icon'>");
+//				this.icon = $(".current-icon").html("<img src='http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png' alt='OpenWeather Icon'>");
+                this.icon = $(".current-icon").html("<i class='owf owf-" + response.data.weather[0].id + " " + "owf-5x'></i>");
 				this.desc = response.data.weather[0].description;
-				console.log(response);
 			});
 		},
 		filters: {
@@ -44,8 +44,24 @@
 </script>
 
 <style lang="scss" scoped>
-	$color: green;
-	h1 {
-		color: $color;
+
+	.current-weather{
+        color: white;
+		text-align: center;
+		border: 1px solid white;
+        margin-top: 50px;
+        h1{
+            font-size: 150px;
+        }
+        h3{
+            font-size: 50px;
+        }
+        h4{
+            font-size: 30px;
+        }
+        .current-icon{
+            size: 20px;
+        }
 	}
+
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-  	<h1>Today</h1>
     <current-weather></current-weather>
     <hourly-weather></hourly-weather>
   </div>
