@@ -30,7 +30,6 @@
 			.then(response =>{
 				this.temp = response.data.main.temp;
 				this.city = response.data.name;
-//				this.icon = $(".current-icon").html("<img src='http://openweathermap.org/img/w/" + response.data.weather[0].icon + ".png' alt='OpenWeather Icon'>");
                 this.icon = $(".current-icon").html("<i class='owf owf-" + response.data.weather[0].id + " " + "owf-5x'></i>");
 				this.desc = response.data.weather[0].description;
 			});
@@ -48,7 +47,6 @@
 	.current-weather{
         color: white;
 		text-align: center;
-		border: 1px solid white;
         margin-top: 50px;
         h1{
             font-size: 150px;
@@ -58,9 +56,6 @@
         }
         h4{
             font-size: 30px;
-        }
-        .current-icon{
-            size: 20px;
         }
 	}
 

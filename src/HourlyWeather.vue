@@ -1,13 +1,11 @@
 <template>
 <div class="wrapper">
    <div class="hourly-weather" v-for="item in firstEight" >
-       <h2>{{ item.dt_txt | stripDate}}</h2>
-       <p>{{ item.main.temp | round}}&deg;C </p>
+       <h1>{{ item.dt_txt | stripDate}}</h1>
+       <hr>
        <p>{{item.weather[0].description}}</p>
-       <img :src="'http://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="">
-       <!--{{item.weather[0].id}}-->
-       <i :class="'owf owf-'+ item.weather[0].id + '-' + item.sys.pod + ' owf-2x'"></i>
-       <!--<div class="hourly-icon">{{item}}</div>-->
+       <i :class="'owf owf-'+ item.weather[0].id + '-' + item.sys.pod + ' owf-3x'"></i>
+       <h3>{{ item.main.temp | round}}&deg;C </h3>
    </div>
 </div>
 </template>
@@ -25,7 +23,7 @@
        },
        computed: {
             firstEight: function(){
-                return this.hourly.slice(0, 8)
+              return this.hourly.slice(0, 8)
             },
        },
        mounted(){
@@ -53,17 +51,26 @@
 </script>
 
 <style lang="scss" scoped>
+@import "mixins";
 
+// Variables
+  $background-color: #3498db;
+
+    .wrapper{
+      @include wrapper; 
+    }
     .hourly-weather{
-        border-right: 1px solid white;
+        padding: 10px;
+        border: 1px solid white;
         float: left;
         width: (100% / 8);
         color: white;
         text-align: center;
         margin-top: 50px;
-    }
-    .hourly-weather:first-child{
-        border-left: 1px solid white;
+        background: darken($background-color, 25%);
+        hr{
+          border-width: 1px;
+        }
     }
 
 </style>

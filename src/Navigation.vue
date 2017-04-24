@@ -3,12 +3,12 @@
         <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group">
                 <router-link to="/">
-                    <button type="button" class="btn">Today</button>
+                    <button v-on:click="onClick" type="button" class="btn today-btn">Today</button>
                 </router-link>
             </div>
             <div class="btn-group">
                 <router-link to="/ten-days">
-                    <button type="button" class="btn">10 Days</button>
+                    <button type="button" class="btn ten-days-btn">10 Days</button>
                 </router-link>
             </div>
         </div>
@@ -18,27 +18,34 @@
 
 <script>
     export default {
-    	name: 'navigation'
+    	name: 'navigation',
+        data: function(){
+            return{
+
+            }
+        },
+        methods: {
+            onClick: function(){
+                $('button').on('click', function(){
+                    $('button').removeClass('active');
+                    $(this).addClass('active');
+                });
+            }
+        }
     }
+
 </script>
 
 <style lang="scss" scoped>
-    .wrapper {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 50px;
-        box-sizing: border-box;
+@import "mixins";
+    
+    .wrapper{
+        @include navigationWrapper;
     }
-    .btn  {
-        margin-top: 20px;
-        background:  transparent;
-        height:  38px;
-        border:  3px solid white;
-        text-align:  center;
-        font-size:  14px;
-        font-weight: bold;
-        color:  #fff;
-        border-radius: 0;
+    .btn{
+        @include navigationBtn;
+    }
+    .active {
+        background: darken(#3498db, 25%);
     }
 </style>

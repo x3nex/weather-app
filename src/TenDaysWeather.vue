@@ -1,10 +1,10 @@
 <template>
-	<div>
-		<div v-for="day in days">
-			<h1>Max Temp {{day.temp.max | round}}</h1>
-			<h1>Min Temp {{day.temp.min | round}}</h1>
-			<img :src="'http://openweathermap.org/img/w/' + day.weather[0].icon + '.png'" alt="">
-			<p>description {{day.weather[0].description}}</p>
+	<div class="wrapper">
+		<div class="ten-days-weather" v-for="day in days">
+			<h1>{{day.temp.max | round}}&deg;C / {{day.temp.min | round}}&deg;C</h1>
+			<i :class="'owf owf-'+ day.weather[0].id + ' owf-5x'"></i>
+			<h4>{{day.weather[0].description}}</h4>
+			<hr>
 		</div>
 	</div>
 </template>
@@ -28,6 +28,7 @@
 			})
 			.then(response =>{
 				this.days = response.data.list
+				console.log(response);
 			})
 		},
 		filters: {
@@ -39,5 +40,22 @@
 </script>
 
 <style lang="scss" scoped>
+@import "mixins";
 
+	.wrapper{
+		@include wrapper;	
+	}
+	.ten-days-weather{
+		margin-top: 30px;
+		padding: 10px;
+		color: white;
+		height: (100% / 10);
+		text-align: center;
+		h1{
+			font-size: 45px;
+		}
+	}
+	.ten-days-weather:last-child hr{
+			display: none;
+		}
 </style>

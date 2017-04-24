@@ -17,7 +17,8 @@ import Navigation from './Navigation.vue'
 </script>
 
 <style>
-    body{
-        background: linear-gradient(to left, #2c3e50, #3498db);
-    }
+
+  body{
+    background: linear-gradient(to left, #2c3e50, #3498db);
+  }
 </style>
