@@ -5,7 +5,9 @@
        <p>{{ item.main.temp | round}}&deg;C </p>
        <p>{{item.weather[0].description}}</p>
        <img :src="'http://openweathermap.org/img/w/' + item.weather[0].icon + '.png'" alt="">
-       <div class="hourly-icon">{{item}}</div>
+       <!--{{item.weather[0].id}}-->
+       <i :class="'owf owf-'+ item.weather[0].id + '-' + item.sys.pod + ' owf-2x'"></i>
+       <!--<div class="hourly-icon">{{item}}</div>-->
    </div>
 </div>
 </template>
@@ -36,9 +38,7 @@
            })
            .then(response =>{
                this.hourly = response.data.list;
-               this.icon = $(".hourly-icon").html("<i class='owf owf-" + this.hourly[0].weather[0].id + " " + "owf-2x'></i>");
-//               this.icon = $(".hourly-icon").html("<i class='owf owf-" + item.weather[0].id + " " + "owf-5x'></i>");
-//               console.log(this.icon);
+               console.log(response.data);
            })
        },
        filters: {
